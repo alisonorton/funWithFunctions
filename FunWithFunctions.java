@@ -14,7 +14,7 @@ public class FunWithFunctions {
         input = s.nextLine();
         String[] relation = input.split(" ");
 
-        //Turing the domain array into a string, so we can display it easily
+        //Displaying domain, codomain, and relation
         displaySet(domain, 0);
         displaySet(codomain, 1);
         displayRelation(relation);
@@ -44,13 +44,13 @@ public class FunWithFunctions {
                 displayOutput += setInput[i] + " }";
             }
         }
-
+        //Displaying domain or codomain
         System.out.println(displayOutput);
     }
 
     public static void displayRelation(String[] relInput){
         String relOutput = "RELATION: { ";
-
+        //Looping to add to relOutput string
         for(int i = 0; i < relInput.length; i +=2){
             if(i != relInput.length-2) {
                 relOutput += "(" + relInput[i] + "," + relInput[i+1] + "), ";
@@ -59,7 +59,7 @@ public class FunWithFunctions {
                 relOutput += "(" + relInput[i] + "," + relInput[i+1] + ") }";
             }
         }
-
+        //Displaying relations
         System.out.println(relOutput);
 
     }
