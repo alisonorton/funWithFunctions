@@ -17,6 +17,7 @@ public class FunWithFunctions {
         //Turing the domain array into a string, so we can display it easily
         displaySet(domain, 0);
         displaySet(codomain, 1);
+        displayRelation(relation);
 
         //Logic to determine if it is a function, and if so what type
 
@@ -48,7 +49,19 @@ public class FunWithFunctions {
     }
 
     public static void displayRelation(String[] relInput){
-        
+        String relOutput = "RELATION: { ";
+
+        for(int i = 0; i < relInput.length; i +=2){
+            if(i != relInput.length-2) {
+                relOutput += "(" + relInput[i] + "," + relInput[i+1] + "), ";
+            }
+            else{
+                relOutput += "(" + relInput[i] + "," + relInput[i+1] + ") }";
+            }
+        }
+
+        System.out.println(relOutput);
+
     }
 
 }
