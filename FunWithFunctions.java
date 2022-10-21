@@ -19,7 +19,36 @@ public class FunWithFunctions {
         displaySet(codomain, 1);
         displayRelation(relation);
 
-        //Logic to determine if it is a function, and if so what type
+        //Looping through to see if any elements of the domain are used more than once
+        int[] domainCounter = new int[domain.length];
+
+        for(int i = 0; i < domain.length; i++){
+            int counter = 0;
+            for(int j = 0; j < relation.length; j+=2){
+                if(domain[i].equals(relation[j])){
+                    counter++;
+                    //System.out.println(Arrays.toString(domainCounter));
+                }
+                domainCounter[i] = counter;
+            }
+        }
+        System.out.println(Arrays.toString(domainCounter));
+
+        //Looping through to see how many times the elements of the codomain are used (can be used 0 times)
+
+        int[] codomainCounter = new int[codomain.length];
+
+        for(int i = 0; i < codomain.length; i++){
+            int counter = 0;
+            for(int j = 1; j < relation.length; j+=2){
+                if(codomain[i].equals(relation[j])){
+                    counter++;
+                }
+                codomainCounter[i] = counter;
+            }
+        }
+        System.out.println(Arrays.toString(codomainCounter));
+
 
         //Displaying
     }
