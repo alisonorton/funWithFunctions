@@ -21,18 +21,16 @@ public class FunWithFunctions {
 
         //Looping through to see if any elements of the domain are used more than once
         int[] domainCounter = new int[domain.length];
-
         for(int i = 0; i < domain.length; i++){
             int counter = 0;
             for(int j = 0; j < relation.length; j+=2){
                 if(domain[i].equals(relation[j])){
                     counter++;
-                    //System.out.println(Arrays.toString(domainCounter));
                 }
-                domainCounter[i] = counter;
             }
+            domainCounter[i] = counter;
+            //System.out.println(Arrays.toString(domainCounter));
         }
-        System.out.println(Arrays.toString(domainCounter));
 
         //Looping through to see how many times the elements of the codomain are used (can be used 0 times)
 
@@ -44,13 +42,64 @@ public class FunWithFunctions {
                 if(codomain[i].equals(relation[j])){
                     counter++;
                 }
-                codomainCounter[i] = counter;
+            }
+            codomainCounter[i] = counter;
+        }
+
+        //Is this a function?
+        Boolean isFunction = true;
+        for(int i =0; i < domainCounter.length; i++){
+            if(domainCounter[i] > 1){
+                isFunction = false;
             }
         }
-        System.out.println(Arrays.toString(codomainCounter));
 
+        Boolean isOnto = true;
+        Boolean isOneToOne = true;
+        Boolean isBijection = true;
+        for(int i =0; i < codomainCounter.length; i++){
+            if(codomainCounter[i] < 1){
+                isOnto = false;
+            }
+            if(codomainCounter[i] > 1){
+                isOneToOne = false;
+            }
+            if(isOneToOne == false || isOnto == false){
+                isBijection = false;
+            }
+        }
 
         //Displaying
+
+        if(isFunction){
+            System.out.println("This is a function.");
+            //If it's a function we want to check what type of function it is
+            if(isOnto){
+                System.out.println("This is is onto.");
+            }
+            else{
+                System.out.println("This is *not* onto.");
+            }
+
+            if(isOneToOne){
+                System.out.println("This is is one-to-one.");
+            }
+            else{
+                System.out.println("This is *not* one-to-one.");
+            }
+
+            if(isBijection){
+                System.out.println("This is is a bijection.");
+            }
+            else{
+                System.out.println("This is *not* a bijection.");
+            }
+        }
+        else{
+            System.out.println("This *not* a function.");
+        }
+
+
     }
 
     public static void displaySet(String[] setInput, int setType){
